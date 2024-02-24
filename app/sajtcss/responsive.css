@@ -1,0 +1,216 @@
+/* Extra small devices (phones, 600px and down) */
+#licno {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#licno div {
+    width: 48%;
+}
+#licno div iframe {
+    width: 100%;
+    margin-top: 10px;
+}
+#root #slide3 {
+    text-align: left;
+}
+#root .btn {
+    text-align: center;
+}
+#root #slike_akcija {
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+    height: 130px;
+}
+#root #slike_akcija .item {
+    margin-right: 20px;
+    width: 70px;
+    min-width: 70px;
+    height: 70px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+#root #slike_akcija .item img {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+    #root #slide1, #slide2, #slide3 {
+        padding: 20px 10px !important;
+    }
+    #root #slide1 {
+        flex-direction: column-reverse !important;
+    }
+    #root .app .contact {
+        width: 100% !important;
+    }
+    #root .app .images-wrapper .item {
+        width: 100% !important;
+    }
+    #root .app #slide1 .images-wrapper {
+        width: 100% !important;
+        padding: 20px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        background: var(--darker) !important;
+        border-radius: 5px !important;
+        color:var(--text) !important;
+        margin-right: 0 !important;
+    }
+    #root .app #slide1 .options {
+        background: var(--darker) !important;
+        border-radius: 5px !important;
+        color:var(--text) !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+    #root .app .header {
+        padding: 0 !important;
+    } 
+    #root .app #licno div {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 500px) {
+    #root .app .header {
+        padding: 0;
+    } 
+    #root #slide1 {
+        flex-direction: column-reverse;
+    }
+    #root .app .contact {
+        width: 100%;
+    }
+    #root #slide1, #slide2, #slide3 {
+        /* padding: 20px 20px 0 10px; */
+    }
+    #root .app .images-wrapper .item {
+        width: 100%;
+    }
+    #root .app #slide1 .images-wrapper {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+        margin-right: 0;
+    }
+    #root .app #slide1 .options {
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    #root .app .header {
+        padding: 20px 50px 0 50px;
+    } 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 600px) {
+    #root #slide1 {
+        flex-direction: row;
+    }
+    #root .app .contact {
+        width: 70%;
+    }
+    #root .app .images-wrapper .item {
+        width: 100%;
+    }
+    #root .app #slide1 .images-wrapper {
+        width: 73%;
+        padding: 20px;
+        margin-right: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+    }
+    #root .app #slide1 .options {
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+        width: 25%;
+        /* margin-bottom: 20px; */
+    }
+    #root .app .header {
+        padding: 20px 50px 0 50px;
+    } 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 800px) {
+    #root #slide1 {
+        flex-direction: row;
+    }
+    #root .app .contact {
+        width: 60%;
+    }
+    #root .app .images-wrapper .item {
+        width: 49%;
+    }
+    #root .app #slide1 .images-wrapper {
+        width: 73%;
+        padding: 20px;
+        margin-right: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+    }
+    #root .app #slide1 .options {
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+        width: 25%;
+    }
+    #root .app .header {
+        padding: 20px 50px 0 50px;
+    } 
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1000px) {
+    #root #slide1 {
+        flex-direction: row;
+    }
+    #root .app .contact {
+        width: 50%;
+    }
+    #root .app .images-wrapper .item {
+        width: 32%;
+    }
+    #root .app #slide1 .images-wrapper {
+        width: 73%;
+        padding: 20px;
+        margin-right: 2%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+    }
+    #root .app #slide1 .options {
+        background: var(--darker);
+        border-radius: 5px;
+        color:var(--text);
+        width: 25%;
+    }
+}

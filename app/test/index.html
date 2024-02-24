@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="album_app">
+        <div class="pickerBg" onclick="closePicker(event)" id="colorpicker">
+            <div class="colorPicker" id="kurac">
+                <input type="color" hidden id="coloradder">
+                <div class="btn">Dodaj boju</div>
+            </div>
+        </div>
+
+        <div class="story" id="story">
+            <div class="questions" id="questions">
+                <div class="box" id="box">
+                    <div class="question active">
+                        <h2>Izaberite velicinu foto albuma</h2><br><br>
+                        <div class="buttons">
+                            <div class="btn auto" onclick="setAspectRatio(1,1, '15x15')">15x15</div>
+                            <div class="btn auto" onclick="setAspectRatio(3,4, '15x20')">15x20</div>
+                            <div class="btn auto" onclick="setAspectRatio(1,1, '20x20')">20x20</div>
+                            <div class="btn auto" onclick="setAspectRatio(4,5, '20x25')">20x25</div>
+                            <div class="btn auto" onclick="setAspectRatio(1,1, '25x25')">25x25</div>
+                            <div class="btn auto" onclick="setAspectRatio(2,3, '20x30')">20x30</div>
+                            <div class="btn auto" onclick="setAspectRatio(3,4, '30x40')">30x40</div>
+                            <div class="btn auto" onclick="setAspectRatio(1,1, '40x40')">40x40</div>
+                        </div>
+                    </div>
+                    <div class="question active">
+                        <h2>Izaberite vrstu albuma</h2><br><br>
+                        <div class="row">
+                            <div class="item" onclick="setPaper(1)">
+                                <div class="icon">
+                                    <i class="fas fa-rectangle-landscape"></i>
+                                </div>
+                                Vodoravno
+                            </div>
+                            <div class="item" onclick="setPaper(2)">
+                                <div class="icon">
+                                    <i class="fas fa-rectangle-portrait"></i>
+                                </div>
+                                Uspravno
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question active">
+                        <h2>Upisite podatke</h2><br><br>
+                        <form action="">
+                            <div class="flex">
+                                <input type="text" id="ime" placeholder="Ime"> <input type="text" id="prezime"
+                                    placeholder="Prezime">
+                                <input type="text" id="email" placeholder="Email"> <input type="text" id="telefon"
+                                    placeholder="Telefon">
+                                <div id="shipping" style="display:none">
+                                    <input type="text" id="zip" placeholder="Postanski broj"> <input type="text" id="grad"
+                                        placeholder="Grad"> <input type="text" id="adresa" placeholder="Adresa">
+                                </div>
+                                <div id="licno">
+                                    <label>
+                                        <input id="loc1" class="with-gap" name="location" type="radio" checked="">
+                                        <span>Preuzimanje u poslovnici Terazije 5</span>
+                                    </label><br>
+                                    <label>
+                                        <input id="loc2" class="with-gap" name="location" type="radio">
+                                        <span>Preuzimanje u poslovnici Bulevar Despota Stefana 48</span>
+                                    </label><br><br>
+                                </div>
+                            </div>
+                            <label>
+                                <input id="shipping1" class="with-gap" name="shipping" type="radio" checked="">
+                                <span>Licno preuzimanje</span><br>
+                            </label>
+                            <label>
+                                <input id="shipping2" class="with-gap" name="shipping" type="radio">
+                                <span>Kurirska sluzba</span><br>
+                            </label>
+
+                            <textarea style="width: 100%;margin-top: 20px;resize: vertical;" name="poruka" id="poruka"
+                                cols="30" rows="5" placeholder="Dodatna poruka"></textarea>
+                        </form>
+                        <div class="buttons">
+                            <div class="btn" onclick="closeInfo()">Nazad na izradu</div>
+                            <div class="btn" onclick="toPrice()">Dalje</div>
+                        </div>
+                    </div>
+                    <div class="question active">
+                        <div class="buttons">
+                            <div class="btn" onclick="backToInfo()">Nazad</div>
+                        </div>
+                        <h2>Zavrsite porudzbinu</h2><br><br>
+                        <h4>Cena: <b>0</b> RSD</h4>
+                        <div class="buttons">
+                            <div class="btn" onclick="otvoriPregled()">Pregled</div>
+                            <div class="btn" onclick="submit()">Poruci</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pregled" id="pregled">
+            <div id="loaded">
+                <div class="preview">
+                    <h2>Pregled</h2>
+                    <div id="preview_items"></div>
+                </div>
+                <div class="btn" onclick="zatvoriPregled()">Nazad</div>
+            </div>
+            <div id="loader">
+                <h2>Molimo vas da sacekate</h2>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <!-- <div id="book">
+                <div class="book_page blank"></div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/istockphoto-1093110112-612x612.jpg');">1</div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/istockphoto-1093110112-612x612.jpg');">2</div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/istockphoto-1322104312-170667a.jpg');">3</div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/tree-736885__480.jpg');">4</div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/tree-736885__480.jpg');">5</div>
+                <div class="book_page" onclick="flipPage(this)" style="background-image: url('slike/istockphoto-1093110112-612x612.jpg');">6</div>
+            </div> -->
+        </div>
+
+        <div class="wait" id="wait">
+            <div id="waiting">
+                <h2>Molimo vas da sacekate</h2>
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div id="success" style="display: none;">
+                <h2>Album je uspesno poslat</h2>
+                <p>Nas tim ce vas uskoro kontaktirati.</p>
+            </div>
+        </div>
+        <input type="file" accept=".png,.jpg,.jpeg,.gif" id="image_uploader" multiple>
+        <div class="selection_pane active" id="selection_menu">
+            <div class="pull_track">
+                <div class="pull_menu" id="pull_menu">
+                    <i class="fa fa-chevron-right" id="menu_chevron"></i>
+                </div>
+            </div>
+            <div class="menu">
+                <ul id="menu_items">
+                    <li class="active" onclick="changeMenu('slike')"><i class="fa fa-images"></i>Slike</li>
+                    <li onclick="changeMenu('pozadine')"><i class="fa fa-fill-drip"></i>Pozadine</li>
+                    <li onclick="changeMenu('okviri')"><i class="fas fa-border-outer"></i>Okviri</li>
+                    <li onclick="finish()"><i class="far fa-check-square"></i>Zavrsi</li>
+                </ul>
+            </div>
+            <div class="menu_content" id="menu_content">
+                <div id="pozadine" style="display:none">
+                    <div class="row">
+                        <div class="row">
+                            <h2>Izaberite pozadinu</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row">
+                            <h4>Napravite svoju pozadinu</h4>
+                        </div>
+                        <div class="row">
+                            <div class="btn" onclick="openPicker()">Boja <input type="color" hidden id="coloradder"
+                                    onchange="addColor(event)"></div>
+                            <!-- <div class="btn">Slika</div> -->
+                        </div>
+                        <div class="row">
+                            <h4>Izaberite vasu pozadinu</h4>
+                        </div>
+                        <div class="row" id="customColors">
+                        </div>
+                        <div class="row">
+                            <h4>Izaberite postojecu pozadinu</h4>
+                        </div>
+                        <div class="row">
+                            <div class="item" style="background: linear-gradient(to left, #2980b9, #6dd5fa, #ffffff);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to left, #ee9ca7, #ffdde1);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to right, #fc00ff, #00dbde);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to right, #136a8a, #267871);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to right, #fdfc47, #24fe41);"
+                                onclick="setBackground(this)"></div>
+                            <div class="item" style="background: linear-gradient(to right, #00c6ff, #0072ff);"
+                                onclick="setBackground(this)"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="slike">
+                    <div class="row">
+                        <div class="row">
+                            <h2>Vase slike</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row">
+                            <h4>Dodajte vase slike</h4>
+                        </div>
+                        <div class="row">
+                            <div class="btn full" onclick="document.getElementById('image_uploader').click()">Dodaj
+                                slike</div>
+                        </div>
+                        <div class="row">
+                            <h4>Izaberite sliku</h4>
+                        </div>
+                        <div class="row" id="user_uploads">
+                            <div class="item" id="upload_83008364797a9" onclick="addImageToPage('upload_83008364797a9')" style="background-image: url(&quot;https://fotostudioart.rs/app/uploads/img_62063c98a84359.51721099.JPG&quot;);">
+                                <div class="loader" style="height: 100%; display: none;">100%</div>
+                            </div>
+                            <!-- <div class="item" style="background: linear-gradient(to left, #2980b9, #6dd5fa, #ffffff);">
+                                <div class="loader">
+                                    <span>100%</span>
+                                </div>
+                            </div>
+                            <div class="item" style="background: linear-gradient(to left, #ee9ca7, #ffdde1);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div>
+                            <div class="item" style="background: linear-gradient(to left, #4ac29a, #bdfff3);"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div id="okviri" style="display:none">
+                    <div class="row">
+                        <div class="row">
+                            <h2>Izaberite okvir</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="row">
+                            <h4>Napravite svoj okvir</h4>
+                        </div>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <h4>Izaberite debljinu okvira</h4>
+                            <input type="range" class="slider" step="1" min="1" max="15" id="borderWidth" oninput="setBorder(null)">
+                        </div>
+                        <div class="row">
+                            <div class="btn" onclick="openPicker()">Boja <input type="color" hidden id="coloradder"
+                                    onchange="addBorderColor(event)"></div>
+                            <!-- <div class="btn">Slika</div> -->
+                        </div>
+                        <div class="row">
+                            <h4>Izaberite vas okvir</h4>
+                        </div>
+                        <div class="row" id="customBorderColors">
+                        </div>
+                        <div class="row">
+                            <h4>Izaberite postojeci okvir</h4>
+                        </div>
+                        <div class="row">
+                            <div class="item" style="background: #ffffff"
+                                onclick="setBorder(this)"></div>
+                            <div class="item" style="background: #f5deb3"
+                                onclick="setBorder(this)"></div>
+                            <div class="item" style="background: #bdfff3"
+                                onclick="setBorder(this)"></div>
+                            <div class="item" style="background: #267871"
+                                onclick="setBorder(this)"></div>
+                            <div class="item" style="background: #fbfb5b"
+                                onclick="setBorder(this)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content_pane" id="content_pane">
+            <div class="pages_pane" id="pages_pane">
+                <div class="pages" id="pages">
+                </div>
+
+            </div>
+            <div class="options_menu">
+                <div class="new_page" onclick="addPage(false)"><i class="far fa-plus-square"></i> Dodaj stranicu</div>
+                <div class="slidercontainer">
+                    <input type="range" value="1" min="0.4" max="8" step="0.01" class="slider" id="zoom_slider">
+                    <i class="fas fa-magnifying-glass"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"
+        integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/listeners.js"></script>
+    <script src="js/upload.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+</body>
+
+</html>

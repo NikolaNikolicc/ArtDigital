@@ -1,0 +1,858 @@
+#dialog {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease;
+  background-image: url("https://the7.io/creative/wp-content/uploads/sites/3/2014/03/skin05r.stripes-stripe-1-bg-image.gif");
+}
+
+#dialog .questions {
+  height: 70vh;
+  display: flex;
+  width: 100vw;
+  max-width: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+#dialog .questions .box {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+#dialog .questions .box .question {
+  height: 100%;
+  display: none;
+  color: #262626;
+  flex-direction: column;
+  min-width: 400px;
+  padding: 0 5px;
+  align-items: center;
+  overflow-y: auto;
+}
+#dialog .questions .box .question .row {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+#dialog .questions .box .question .row .item {
+  width: 45%;
+  background: #f2f2f2;
+  box-shadow: 0 0 7px -4px #262626;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#dialog .questions .box .question .row .item .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+#dialog .questions .box .question.active {
+  display: flex;
+}
+#dialog .questions .box .question .flex {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#dialog .questions .box .question .flex input[type=text] {
+  width: 49%;
+  color: #85868c;
+  border-top-width: 1px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  padding: 10px 20px;
+  border-color: rgba(51, 51, 51, 0.12);
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  outline: none;
+  margin-bottom: 20px;
+}
+#dialog .questions .box .question .flex input[type=text].invalid {
+  outline: 1px solid red;
+}
+#dialog .questions .box .question textarea {
+  color: #85868c;
+  border-top-width: 1px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  padding: 10px 20px;
+  border-color: rgba(51, 51, 51, 0.12);
+  background-color: #f0f0f0;
+  border-radius: 2px;
+  outline: none;
+  margin-bottom: 20px;
+  resize: vertical;
+}
+#dialog .questions .box .question textarea.invalid {
+  outline: 1px solid red;
+}
+#dialog .questions .box .question .buttons {
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#dialog .questions .box .question .buttons .btn {
+  float: left;
+  width: auto;
+  width: calc(50% - 5px);
+  border-radius: 5px;
+  background: #ED213A;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ed213a, #93291e);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ed213a, #93291e);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 10px 10px;
+  text-align: center;
+  font-weight: bold;
+  will-change: transform;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  color: white;
+}
+#dialog .questions .box .question .buttons .btn:hover {
+  transform: translateY(-5px);
+}
+#dialog .questions .box .question .buttons .btn:nth-child(1) {
+  margin-right: 10px;
+}
+#dialog .questions .box .question .buttons .btn.full {
+  width: 100%;
+  margin: 0;
+}
+#dialog .questions .box .question .buttons .btn.auto {
+  width: auto;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: calc(33% - 50px);
+}
+#dialog .questions .box .question .buttons .btn.auto:nth-child(3n) {
+  margin-right: 0;
+}
+
+
+@font-face {
+  font-family: NowBold;
+  src: url("Now-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: NowBold;
+  font-weight: bold;
+  src: url("Now-Bold.otf") format("opentype");
+}
+
+#root {
+  font-family: NowBold;
+}
+
+:root {
+    --blue: #bc4e9c;
+    --blue1: #bc4e9c;
+    --blue2: #bc4e9c;
+    /* --darker: rgb(24, 24, 24);
+    --dark: rgb(36, 36, 36); */
+
+    --darker: rgb(228, 228, 228);
+    --dark: white;
+    --text: black;
+}
+.wf-wrap {
+  /* width: 0; */
+  padding: 0 !important;
+}
+
+#root nav {
+    background-color: var(--blue);
+}
+
+/* Need to go back and clean this up. Make names more specific. Maybe use sass? */
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto");
+
+:root {
+  --primary: #2196f3;
+  --primary-dark: #1976d2;
+  --primary-text: #fff;
+  --secondary: rgba(0, 0, 0, 0.38);
+  --disabled: rgb(188, 188, 188);
+}
+
+#obavestenje {
+  position: fixed;
+  top:0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999999;
+}
+#obavestenje .layer {
+  overflow-y: auto;
+  position: fixed;
+  top:50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  max-height: 600px;
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 5px -2px rgb(34, 34, 34);
+  font-size: 1.3em;
+  line-height: 1.2em;
+  word-wrap: break-word;
+}
+#obavestenje .body {
+  color: rgb(80, 80, 80);
+}
+#obavestenje h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#obavestenje li {
+  margin-bottom: 20px;
+}
+#obavestenje .buttons {
+  padding-top: 20px;
+  border-top: 1px solid black;
+  justify-self: flex-end;
+  margin-top: auto;
+}
+#obavestenje .buttons .btn {
+  width: auto;
+  width: calc(50% - 10px);
+  border-radius: 5px;
+  background: var(--blue);
+  padding: 10px 10px;
+  text-align: center;
+  font-weight: bold;
+  will-change: transform;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  color: white;
+  float: right;
+  font-size: 0.8em;
+}
+#obavestenje .btn:hover {
+  transform: translateY(-5px);
+}
+
+#root * {
+  box-sizing: border-box;
+  font-family: NowBold, sans-serif;
+}
+
+#root .heading {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: NowBold, cursive;
+  font-size: 4rem;
+}
+
+#root h2.heading {
+  font-size: 3rem;
+}
+
+/* .container {
+  width: 80%;
+  min-width: 900px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.016);
+} */
+
+/* Stepper */
+#root .steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 4rem;
+  margin: 0 0 2rem 0;
+}
+
+#root .step {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  transition: 0.5s;
+  border-radius: 4px;
+  user-select: none;
+  text-decoration: none;
+}
+
+#root .step:active {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: 0.02s;
+  text-decoration: none;
+}
+
+#root .step:active .label {
+  color: rgb(29, 29, 29);
+}
+#root .btn-floating {
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 101;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#root input.invalid {
+  border: 1px solid rgba(255, 0, 0, 0.602);
+}
+
+#root .step .icon {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  background-color: var(--secondary);
+  color: var(--primary-text);
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+#root .step.active .icon,
+#root .step.complete .icon {
+  background: var(--blue);
+  background: var(--blue1);
+  background: var(--blue2);
+  text-decoration: none;
+}
+
+#root .step-divider {
+  flex: 1;
+  border-top-style: solid;
+  border-color: #bdbdbd;
+  border-top-width: 1px;
+}
+
+#root .step .label {
+  color: rgb(180, 180, 180);
+}
+
+#root .step.active .label {
+  color: rgb(29, 29, 29);
+}
+
+/* Button Styles*/
+#root .btn {
+  color: var(--primary-text);
+  background: linear-gradient(to bottom, #ed213a, #93291e);
+  text-transform: uppercase;
+  cursor: pointer;
+  min-height: 2.5rem;
+  min-width: 6rem;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+#root .btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+#root .btn[disabled] {
+  background: none;
+  box-shadow: none;
+  color: var(--disabled);
+  cursor: default;
+}
+#root .btn:active {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+#root .btn:focus {
+  background: var(--blue);
+  background: var(--blue1);
+  background: var(--blue2);
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Finished is hidden by default. Displays when all steps are complete. */
+#root .step-finish {
+  display: none;
+}
+#root body {
+    background: var(--dark);
+}
+#root .app {
+    
+}
+#root #slide1, #slide2, #slide3 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 20px;
+    height: 100%;
+    padding: 20px 50px 0 50px;
+}
+#root #slide4,#slide3 {
+    justify-content: center;
+    align-items: center;
+}
+#root #slide2 {
+  justify-content: center;
+}
+#root #slide3 {
+    text-align: center;
+}
+#root .btn {
+    line-height: 25px;
+}
+
+#root .app .header {
+    width: 100%;
+    /* margin: 0 auto; */
+    padding: 20px 50px 0 50px;
+    /* margin-top: 100px; */
+} 
+#root .app .header .stepper {
+    width: 100%;
+}
+
+#root .app .buttons {
+    width: 100%;
+    padding: 0 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.akcija .selection {
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+
+  margin-bottom: 40px;
+}
+
+
+#root .app .images-wrapper {
+    width: 73%;
+    padding: 20px;
+    margin-right: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    background: rgb(248, 248, 248) !important;
+    border-radius: 5px;
+    color:var(--text);
+    box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+}
+
+.images-wrapper.akcija {
+  width: 100% !important;
+  padding: 20px;
+  display: inline-block !important;
+  margin-right: 2%;
+  background: rgb(248, 248, 248) !important;
+  border-radius: 5px;
+  color:var(--text);
+  box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+}
+
+.akcija .slots {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  flex-direction: row;
+  width: 100%;
+}
+.akcija .slots .slot {
+  width: 280px;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  margin-right: 2%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.akcija .slots .slot .slot-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.slot .img{
+  padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom:20px;
+    height: 250px;
+    border-radius: 10px 10px 0 0;
+}
+
+.slot .progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 10px;
+  width: 100%;
+  background: linear-gradient(141deg, #9e9e9e, #616161, #9e9e9e);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  z-index: 100;
+  -webkit-animation: OverlayLoading 15s ease infinite;
+  -moz-animation: OverlayLoading 15s ease infinite;
+  animation: OverlayLoading 15s ease infinite;
+  color: #DBDBDB;
+  font-size:2.5em;
+  overflow: hidden;
+  position: absolute;
+  /* justify-content: space-between; */
+}
+
+.slot .img img {
+    max-height: 250px;
+    max-width: 100%;
+}
+
+.btn.delete {
+  margin-top: 10px;
+}
+
+#root .app #slide1 .images-wrapper .item {
+    background: white;
+    height: 380px;
+    width: 24%;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 10px;
+    /* overflow: hidden; */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+}
+
+#root .app #slide1 .images-wrapper .item #delete {
+    position: absolute;
+    right: -15px;
+    top:-15px
+}
+
+#root .app #slide1 .images-wrapper .item #delete .btn-floating {
+    background-color: red;
+}
+
+#root .app #slide1 .images-wrapper .item .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:20px;
+    height: 250px;
+    background: rgb(248, 248, 248);
+    border-radius: 10px 10px 0 0;
+}
+
+#root .app #slide1 .images-wrapper .item .img img {
+    max-height: 250px;
+    max-width: 100%;
+}
+
+#root .app #slide1 .images-wrapper .item .controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#root .app #slide1 .images-wrapper .item .controls .input-field {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+/* #root .app #slide1 .images-wrapper .item .controls input {
+  width: 100px;
+} */
+
+#root .app #slide1 .images-wrapper .item .controls .btn-floating {
+    text-align: center;
+    font-size: 1.1em;
+    background: var(--blue);
+    background: var(--blue1);
+    background: var(--blue2);
+    margin-right: 10px;
+}
+#root .app .overlay {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(141deg, #9e9e9e, #616161, #9e9e9e);
+  background-size: 200% 200%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  z-index: 100;
+  -webkit-animation: OverlayLoading 15s ease infinite;
+  -moz-animation: OverlayLoading 15s ease infinite;
+  animation: OverlayLoading 15s ease infinite;
+  color: #DBDBDB;
+  font-size:2.5em;
+  border-radius: 10px;
+  overflow: hidden;
+  /* justify-content: space-between; */
+}
+#root .app .overlay .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: rgba(207, 0, 0, 0.4);
+}
+#root .app .overlay .progress #bar {
+  width: 0%;
+  height: 10px;
+  background: rgba(207, 0, 0, 1);
+}
+.popup {
+  bottom: 100px;
+  position: fixed;
+  right: 0;
+  transform: translateX(110%);
+  display: inline-block;
+  background: rgba(255, 100, 100, 0.9);
+  color:black;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+  0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  font-size: 1.1em;
+  transition: transform .2s ease;
+}
+.popup.active{
+  transform: translateX(-5%);
+}
+#root .app #slide1 .images-wrapper .item .controls #amount input, #root .app #slide1 .images-wrapper .item .controls select {
+    width: 70%;
+    color: var(--text);
+    border:1px solid #707070;
+}
+
+#root .app #slide1 .images-wrapper .item .controls #dimension {
+  position: relative;
+}
+
+#root .app #slide1 .images-wrapper .item .controls #dimension input {
+    width: 70px;
+    color: var(--text);
+}
+
+#root .app #slide1 .images-wrapper .item .controls #dimension .float {
+  position: absolute;
+  top:-70px;
+  transform: translateY(-50%);
+}
+
+#root .app #slide1 .images-wrapper .item .controls .tiny {
+    font-size: 1.3em;
+    position: relative;
+    margin-top: 10px;
+    top: 5px; 
+}
+
+#root .app #slide1 .options {
+    background: var(--darker);
+    border-radius: 5px;
+    color:var(--text);
+    width: 25%;
+    /* max-height: 298px; */
+    background: rgb(248, 248, 248) !important;
+    box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+}
+
+#root .app .options #type {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#root .app #slide1 .options #dimensions {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+#root .app #slide1 .options #type {
+    padding: 0 20%;
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#root .app #slide1 .options #dimensions .btn {
+    margin: 0 10px;
+    margin-bottom: 10px;
+}
+
+#root .app #slide1 .options #dimensions .float {
+  /* position: absolute; */
+  width: 100%;
+  top: -130px;
+  /* transform: translateY(-50%); */
+  /* display: flex; */
+  margin: 0 20px 20px 20px;
+}
+
+#root .app #slide1 .container {
+    box-shadow: none;
+    margin: 0;
+}
+
+#root .app #slide1 .images-wrapper .row {
+    margin-bottom: 0;
+}
+
+#root .uploader {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 500px;
+    background: var(--darker);
+    box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.48);
+    z-index: 100;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--text);
+    padding: 20px;
+}
+
+#root .uploader .item {
+    display: flex;
+    margin:10px 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#root .uploader .item .progress {
+    width: 100%;
+    /* margin-left: 10px; */
+    margin-bottom: 10px;
+}
+
+#root .uploader .item .progress .bar {
+    width: 0px;
+    height: 100%;
+    background: var(--blue);
+    background: var(--blue1);
+    background: var(--blue2);
+    transition: width .3s ease;
+}
+
+#root .uploader .item .percent {
+  font-size: 1.1em;
+}
+
+#root .app .contact {
+    width: 50%;
+    padding: 20px;
+    background-color: var(--darker);
+    border-radius: 10px;
+}
+#root .app .contact #ime {
+    /* margin-right: 1%; */
+}
+#root .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+#root .app .contact #ime, .app .contact #prezime {
+    width: 49%;
+}
+
+/* .page {
+  p
+} */
+
+#root .app .contact #email {
+    /* margin-right: 1%; */
+}
+#root .app .contact #email, .app .contact #telefon {
+    width: 49%;
+}
+
+#root .app .contact #zip, .app .contact #grad, .app .contact #adresa {
+    width: 32%;
+}
+
+@-webkit-keyframes OverlayLoading {
+  0%{background-position:9% 0%}
+  50%{background-position:92% 100%}
+  100%{background-position:9% 0%}
+}
+@-moz-keyframes OverlayLoading {
+  0%{background-position:9% 0%}
+  50%{background-position:92% 100%}
+  100%{background-position:9% 0%}
+}
+@keyframes OverlayLoading {
+  0%{background-position:9% 0%}
+  50%{background-position:92% 100%}
+  100%{background-position:9% 0%}
+}

@@ -1,0 +1,295 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fotostudioart.rs/app/sajtcss/style_sajtt2.css?test=146">
+<link rel="stylesheet" href="https://fotostudioart.rs/app/sajtcss/responsive.css?id=12">
+<link rel="stylesheet" href="https://fotostudioart.rs/app/sajtcss/loader.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<div id="root">
+	<div id="obavestenje" style="overflow-y:auto">
+		<div class="layer">
+			<h2>Važno obaveštenje!</h2>
+			<div class="body">
+				<ul>
+					<li>Rok za isporuku fotografija je do 7 radnih dana</li>
+					<li>Ukoliko na drugom koraku izaberete "bez akcije", nemate pravo na poklone</li>
+					<li>Ukoliko na drugom koraku izaberete "želim akciju", na svakih 100 fotografija imate pravo na 5 poklona (ako izaberete 500 fotografija, otvoriće vam se opcija da izaberete 5 seta poklona)</li>
+				</ul><br>
+				Molimo Vas pročitate ovu poruku i uvažite ovo obaveštenje kako bi uštedeli naše vreme i Vaše fotografije dobili u što kraćem roku. Hvala Vam na razumevanju.
+			</div>
+			<div class="buttons">
+				<div class="btn" onclick="document.getElementById('obavestenje').style.display = 'none'">Zatvori</div>
+			</div>
+		</div>
+	</div>
+	<div class="app">
+		<div class="header">
+			<div style="margin:0 auto 20px auto;width:95%;padding:10px;border-radius:5px;font-weight:600">
+				<h2>Izrada fotografija online</h2>
+				<b style="color:black">Ukoliko imate problema sa poručivanjem fotografija, molimo vas da pokušate ponovo
+					preko chrome pretraživača</b><br><br>
+				Format 10x15 15.99 dinara<br>
+				Format 13x18 24.99 dinara<br>
+				Minimum za popust 100 fotografija
+			</div>
+			<div class="stepper">
+				<div class="steps">
+					<a class="step active">
+						<span class="icon"></span>
+					</a>
+					<div class="step-divider"></div>
+					<a class="step">
+						<span class="icon"></span>
+					</a>
+					<div class="step-divider"></div>
+					<a class="step">
+						<span class="icon"></span>
+					</a>
+					<div class="step-divider"></div>
+					<a class="step">
+						<span class="icon"></span>
+					</a>
+				</div>
+				<div class="buttons">
+					<button class="btn step-back" disabled="" style="display: none;">Back</button>
+					<button class="btn step-complete" style="display: none;">Complete Step</button>
+					<button class="btn step-finish" style="display: none;">Finish</button>
+					<div class="btn dodaj-slike" onclick="document.getElementById('imgUpload').click()">Dodaj slike</div>
+					<div class="btn step-next">Dalje</div>
+				</div>
+				<input type="file" accept="image/*" id="imgUpload" multiple="" style="display: none;">
+				<input type="file" accept="image/*" id="posterUpload" style="display: none;">
+				<input type="file" accept="image/*" id="albumUpload" style="display: none;">
+				<input type="file" accept="image/*" id="privezakUpload" style="display: none;" multiple="">
+				<input type="file" accept="image/*" id="magnetUpload" style="display: none;" multiple="">
+				<input type="file" accept="image/*" id="novcanikUpload" style="display: none;">
+				<input type="file" accept="image/*" id="specialUpload" style="display: none;">
+
+				<input type="file" accept="image/*" id="slotUpload" style="display: none;">
+			</div>
+			<center>
+				<h4>Učitane slike <span id="loadedImages">0</span>/<span id="waitingImages">0</span></h4>
+			</center>
+			<center>
+				<h4>Preostale slike za učitavanje: <span id="queueCount">0</span></h4>
+			</center>
+		</div>
+		<div id="slide1" class="page">
+			<div class="images-wrapper" id="images">
+
+			</div>
+			<div class="options">
+				<!-- <center>
+					<h4>Akcija</h4>
+				</center>
+				<div id="type" style="margin-top:10px">
+					<label>
+						<input id="nista_akcija" class="with-gap" name="akcija" type="radio" checked="">
+						<span>Bez akcije</span>
+					</label>
+					<label>
+						<input id="all_akcija" class="with-gap" name="akcija" type="radio">
+						<span>Akcija album, privezak, magnet, poster i poklon iznenadjenja</span>
+					</label>
+				</div> -->
+				<div id="dimensions">
+					<div id="float" style="display:none;width:100%">
+						<div class="float">
+							<!--<div id="posterUp" class="btn" onclick="document.getElementById('posterUpload').click()">Dodaj
+								Poster</div>-->
+							<div id="privezakUp" class="btn" onclick="document.getElementById('privezakUpload').click()">
+								Dodaj Privezak</div>
+							<div id="magnetUp" class="btn" onclick="document.getElementById('magnetUpload').click()">Dodaj
+								Magnet</div>
+							<!--<div id="novcanikUp" class="btn" onclick="document.getElementById('novcanikUpload').click()">Dodaj
+								fotografiju za novcanik</div>-->
+<div id="posterUp" class="btn" onclick="document.getElementById('posterUpload').click()">Dodaj
+								Poster</div>
+							<div id="specialUp" class="btn" onclick="document.getElementById('specialUpload').click()">Dodaj
+								Iznenadjenje</div>
+						</div>
+					</div>
+					<div class="btn" onclick="setsize('10x15')">10x15</div>
+					<div class="btn" onclick="setsize('polaroid')">Polaroid</div>
+					<div class="btn" onclick="setsize('9x13')">9x13</div>
+					<div class="btn" onclick="setsize('13x18')">13x18</div>
+					<div class="btn" onclick="setsize('15x21')">15x21</div>
+					<div class="btn" onclick="setsize('20x25')">20x25</div>
+					<div class="btn" onclick="setsize('15x30')">15x30</div>
+					<div class="btn" onclick="setsize('20x30')">20x30</div>
+					<div class="btn" onclick="setsize('20x38')">20x38</div>
+					<div class="btn" onclick="setsize('25x38')">25x38</div>
+					<div class="btn" onclick="setsize('30x40')">30x40</div>
+					<div class="btn" onclick="setsize('40x50')">40x50</div>
+				</div><br>
+
+				<!-- <div id="type">
+					<label>
+						<input id="ram" class="with-gap" name="ram" type="checkbox">
+						<span>Sa belim ramom</span>
+					</label>
+				</div> -->
+				<div id="type">
+					<label>
+						<input id="sjaj" class="with-gap" name="vrsta" type="radio">
+						<span>Sjaj</span>
+					</label>
+					<label>
+						<input id="mat" class="with-gap" name="vrsta" type="radio" checked="">
+						<span>Mat</span>
+					</label>
+				</div>
+
+			</div>
+		</div>
+		<div id="slide2" class="page" style="display: none;">
+			<div class="images-wrapper akcija" id="">
+				<div class="selection">
+					<input type="radio" name="akcija" checked id="ne_akcija">
+					<label for="ne_akcija">Ne želim akciju</label><br>
+					<input type="radio" name="akcija" style="margin-top: 20px;" id="da_akcija">
+					<label for="da_akcija" >Želim akciju (album, privezak, magnet, poster, poklon iznenadjenje, kalendar)</label>
+				</div>
+				<div id="show_akcija" style="display:none">
+					<div class="slots" id="slots" style="display:flex"></div>
+					<div class="btn" style="display:none; text-align: center;" id="add_action" onclick="addAction()">Dodaj još jednu akciju</div>
+				</div>
+			</div>
+		</div>
+		<div id="slide3" class="page" style="display: none;">
+			<div class="contact">
+				<div class="flex">
+					<input type="text" id="ime" placeholder="Ime"> <input type="text" id="prezime" placeholder="Prezime">
+					<input type="text" id="email" placeholder="Email"> <input type="text" id="telefon" placeholder="Telefon">
+					<div id="shipping" style="display:none">
+						<input type="text" id="zip" placeholder="Postanski broj">
+						<input type="text" id="grad" placeholder="Grad">
+						<input type="text" id="adresa" placeholder="Adresa">
+						<br>
+						<div>
+							<input type="radio" id="kurir1" name="kurir" checked="">
+							<label for="">D Express (Rok isporuke 7 dana, 399 din poštarina)</label>
+						</div>
+						<!--<div>
+							<input type="radio" id="kurir2" name="kurir" checked=""> 
+							<label for="">Post Express (Danas za sutra, 450-550 din poštarina)</label>
+						</div>-->
+					</div>
+					<style>
+						
+					</style>
+					<div style="margin-bottom: 10px;">
+						<label>
+							<input id="shipping1" class="with-gap" name="shipping" type="radio" checked="">
+							<span>Lično preuzimanje</span>
+						</label>
+						<label>
+							<input id="shipping2" class="with-gap" name="shipping" type="radio">
+							<span>Kurirska služba</span>
+						</label>
+					</div>
+					<div id="licno">
+						<div>
+							<input id="loc1" class="with-gap" name="location" type="radio" checked="">
+							<span>Preuzimanje u poslovnici Terazije 5</span>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45256.28670148684!2d20.441599450061148!3d44.85175012584885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a700a5fd60189%3A0x64ae501cd96cdeec!2sFoto%20Studio%20%C5%BDivkovi%C4%87(FOTO%20STUDIO%20ART%20DIGITAL)!5e0!3m2!1sen!2srs!4v1678709506593!5m2!1sen!2srs&amp;z=15" width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div>
+							<input id="loc2" class="with-gap" name="location" type="radio">
+							<span>Preuzimanje u poslovnici Bulevar Despota Stefana 48</span>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45256.28670148684!2d20.441599450061148!3d44.85175012584885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7b9634cbe4a1%3A0x8de870566be4663c!2sFOTO%20STUDIO%20PRIME(art%20digital%20foto)!5e0!3m2!1sen!2srs!4v1678709538567!5m2!1sen!2srs" width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+				<textarea style="width: 100%;margin-top: 20px;resize: vertical;" name="poruka" id="poruka" cols="30" rows="5" placeholder="Dodatna poruka"></textarea>
+			</div>
+		</div>
+		<div id="slide4" class="page" style="display: none;">
+			<div class="contact">
+				<h3>Pregled porudžbine</h3>
+				<h4>Kontakt</h4>
+				<div class="kontakt">
+					<p>Ime i prezime: <span id="kontakt_ime"></span></p>
+					<p>Telefon: <span id="kontakt_tel"></span></p>
+					<p>Email: <span id="kontakt_email"></span></p>
+					<div id="kontakt_dostava">
+						<p>Grad: <span id="kontakt_grad"></span></p>
+						<p>Poštanski broj: <span id="kontakt_zip"></span></p>
+						<p>Adresa: <span id="kontakt_adresa"></span></p>
+						<p>Kurir: <span id="kontakt_kurir"></span></p>
+					</div>
+					<div id="kontakt_licno">
+						<div id="kontakt_licno_1">
+							<p>Mesto preuzimanja: Bulevar Despota Stefana 48</p>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45256.28670148684!2d20.441599450061148!3d44.85175012584885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7b9634cbe4a1%3A0x8de870566be4663c!2sFOTO%20STUDIO%20PRIME(art%20digital%20foto)!5e0!3m2!1sen!2srs!4v1678709538567!5m2!1sen!2srs" width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<div id="kontakt_licno_2">
+							<p>Mesto preuzimanja: Terazije 5</p>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45256.28670148684!2d20.441599450061148!3d44.85175012584885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a700a5fd60189%3A0x64ae501cd96cdeec!2sFoto%20Studio%20%C5%BDivkovi%C4%87(FOTO%20STUDIO%20ART%20DIGITAL)!5e0!3m2!1sen!2srs!4v1678709506593!5m2!1sen!2srs&amp;z=15" width="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+				<br>
+				<h4>Fotografije za izradu</h4>
+				<div id="racun"></div>
+				<h4>Akcijske fotografije</h4>
+				<div id="slike_akcija">
+					
+				</div>
+				<h4>Cena: <b id="cena">0</b> RSD <span id="if_dostava"></span></h4>
+				<input type="checkbox" id="agree"> <label for="">Dragi naši kupci, želimo vas obavestiti da prilikom poručivanja fotografija, ukoliko ne izaberete opciju 'Želim akciju s 6 poklona' na koraku 2, nećete dobiti poklone, već samo album. Molimo vas da pažljivo pregledate potvrdu porudžbine. Ako nema fotografija za poklone, to znači da opcija akcije nije odabrana. U tom slučaju, šaljemo samo fotografije s albumom, bez poklona. Imajte na umu da ne snosimo odgovornost za nedostatak poklona, jer ste upozoreni na ovoj i prethodnoj stranici. Hvala vam na razumevanju kako bismo zajedno izbegli eventualne nejasnoće.</label>
+				<br><br>
+				<div class="btn" onclick="submit()">Poruči</div>
+			</div>
+		</div>
+	</div>
+	<div class="uploader" id="uploader">
+		<h5>Slike se šalju</h5>
+		<div id="files">
+			<div class="item">
+				<div class="progress">
+					<div class="bar" id="bar"></div>
+				</div>
+				<div class="percent"><span id="percent">0</span>%</div>
+			</div>
+		</div>
+	</div>
+	<div class="popup" id="popup"></div>
+	<div class="popup" style="background: rgb(85, 186, 85)" id="popup2"></div>
+	<div class="uploader" id="success">
+		<div id="loader">
+			<h5>Fotografije se šalju</h5>
+			<p>Molimo sačekajte</p>
+			<br>
+			<div class="lds-ring">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<br><br><br><br>
+		</div>
+		<div id="finished" style="display: none;">
+			<h5>Fotografije su uspešno poslate</h5>
+			<p>Naš tim će vas uskoro kontaktirati.</p>
+			<textarea style="width: 100%;margin-top: 20px;resize: vertical;" id="comment" placeholder="Ostavite komentar o uzluzi"></textarea>
+			<br><br>
+			<div class="btn" onclick="finish()">Završi</div>
+		</div>
+	</div>
+</div>
+<br><br>
+<script src="https://fotostudioart.rs/app/js/defs.js?v=2.7.31?id=123"></script>
+<script src="https://fotostudioart.rs/app/js/stepper.js?v=2.7.23"></script>
+<script src="https://fotostudioart.rs/app/js/dist.js?v=2.7.35"></script>
+<script>
+	var sheet = window.document.styleSheets[0];
+	sheet.insertRule(`#page {background-size: initial !important;
+	    background-repeat: repeat !important;
+	    background-color: rgba(0, 0, 0, 0) !important;
+	    background-image: url(https://the7.io/creative/wp-content/uploads/sites/3/2014/03/skin05r.stripes-stripe-1-bg-image.gif) !important;
+	    background-attachment: scroll !important;
+	    min-width: 100vw !important;
+	    left: 0px !important;
+	    width: 100vw !important;}`, sheet.cssRules.length);
+</script>

@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #dbdbdb;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+    width: 700px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+    background: #f2f2f2;
+    border-top: 5px solid #83d8ff;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #dbdbdb;
+    background: #f2f2f2;
+    border-top: 5px solid #fa5f5f;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.filters .search {
+    width: 100%;
+    display: flex;
+}
+
+.filters .search input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    height: 20px;
+}
+.filters .search div {
+    width: 50px;
+    background: #fa5f5f;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.item.downloaded {
+    border-top: 5px solid #abaaaa;
+}
+.item.error {
+    border-top: 5px solid #ff8383;
+}
+
+.item.proccessing {
+    border-top: 5px solid #ffec83;
+}
+
+.item .date {
+    color: #262626;
+    font-size: 14px;
+    background-color: #dedede;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border-bottom: 2px solid #979696;
+}
+
+.item .preuzmi {
+    color: #262626;
+    font-size: 18px;
+    background-color: #83d8ff;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    border-bottom: 2px solid #56c7fc;
+    cursor: pointer;
+}
+
+.item .preuzmi.obrada {
+    background-color: #ffec83;
+    border-bottom: 2px solid #fbd916;
+}
+
+.item .preuzimanje {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.7em;
+    display: flex;
+}
+
+.item .dostava-text {
+    margin-bottom: 10px;
+    color: #262626;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.item .dostava {
+    text-align: left;
+    margin-right: 100px;
+    max-width: 250px;
+}
+
+
+svg {
+    color: #7f7e7e;
+    width: 20px;
+}
+.filters .search svg {
+    color: #fff;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.pagination .button {
+    background: #83d8ff;
+    color: #262626;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 20px;
+    transform: scale(0.4);
+    margin-bottom: 20px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+
+/* Path: app/sajtcss/downloads.css */
